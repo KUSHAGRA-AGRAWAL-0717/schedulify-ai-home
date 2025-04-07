@@ -7,6 +7,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/Dashboard";
+import TimetableGenerator from "./pages/TimetableGenerator";
+import Preferences from "./pages/Preferences";
+import Reschedule from "./pages/Reschedule";
+import ActivitySuggestions from "./pages/ActivitySuggestions";
+import Signup from "./pages/Signup";
+import AdminSettings from "./pages/AdminSettings";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +26,13 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/timetable" element={<TimetableGenerator />} />
+          <Route path="/preferences" element={<Preferences />} />
+          <Route path="/reschedule" element={<Reschedule />} />
+          <Route path="/activities" element={<ActivitySuggestions />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/admin" element={<AdminSettings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
