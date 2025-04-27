@@ -14,6 +14,9 @@ import Reschedule from "./pages/Reschedule";
 import ActivitySuggestions from "./pages/ActivitySuggestions";
 import Signup from "./pages/Signup";
 import AdminSettings from "./pages/AdminSettings";
+import About from "./pages/About";
+import Pricing from "./pages/Pricing";
+import Features from "./pages/Features";
 
 const queryClient = new QueryClient();
 
