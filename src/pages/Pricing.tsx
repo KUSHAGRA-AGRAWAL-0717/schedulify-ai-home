@@ -25,9 +25,9 @@ const PricingTier = ({
       <CardTitle className="text-2xl">{title}</CardTitle>
       <div className="mt-4">
         <span className="text-4xl font-bold">{price}</span>
-        {price !== 'Free' && <span className="text-gray-600">/month</span>}
+        {price !== 'Free' && <span className="text-gray-300">/month</span>}
       </div>
-      <p className="text-gray-600 mt-4">{description}</p>
+      <p className="text-gray-300 mt-4">{description}</p>
     </CardHeader>
     <CardContent>
       <ul className="space-y-4">
@@ -94,7 +94,7 @@ const Pricing = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Simple, Transparent <span className="gradient-text">Pricing</span>
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Choose the plan that best fits your needs. All plans include our core features.
             </p>
           </div>

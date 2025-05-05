@@ -11,13 +11,13 @@ const Features = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
-        <section className="py-20 bg-gradient-to-r from-blue-50 to-purple-50">
+        <section className="py-20 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Powerful <span className="gradient-text">Features</span> for Better Time Management
               </h1>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-300">
                 Discover how Schedulify's intelligent tools can transform your productivity and bring balance to your day.
               </p>
             </div>
