@@ -19,7 +19,7 @@ const CTASection = () => {
               <Link to="/signup">Start Free Trial</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
-              <Link to="/demo">Request Demo</Link>
+              <Link to="/login">Request Demo</Link>
             </Button>
           </div>
           <p className="text-sm mt-6 opacity-75">No credit card required. Cancel anytime.</p>
