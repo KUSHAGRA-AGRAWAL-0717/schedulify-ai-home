@@ -23,6 +23,12 @@ const Login = () => {
     setTimeout(() => {
       setIsLoading(false);
       
+      // Set auth token in localStorage
+      localStorage.setItem('authToken', 'user-auth-token');
+      
+      // Dispatch custom event for navbar to detect login
+      window.dispatchEvent(new Event('user-logged-in'));
+      
       // Show success toast
       toast({
         title: "Login successful",

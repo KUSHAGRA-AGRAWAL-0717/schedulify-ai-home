@@ -1,11 +1,44 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { AlignJustify, X } from 'lucide-react';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if user is logged in by looking for a token or session
+    const checkLoginStatus = () => {
+      // Check for authentication token in localStorage
+      const token = localStorage.getItem('authToken');
+      
+      // Check if user is on authenticated routes
+      const authenticatedPaths = ['/dashboard', '/timetable', '/preferences', '/reschedule', '/activities'];
+      const isAuthenticatedRoute = authenticatedPaths.some(path => location.pathname.startsWith(path));
+      
+      // Set logged in if token exists or user is on authenticated route
+      setIsLoggedIn(!!token || isAuthenticatedRoute);
+    };
+    
+    checkLoginStatus();
+  }, [location]);
+
+  // Set auth token when user logs in (to be called from Login and Signup components)
+  useEffect(() => {
+    // Listen for custom login event
+    const handleLogin = () => {
+      setIsLoggedIn(true);
+    };
+    
+    window.addEventListener('user-logged-in', handleLogin);
+    
+    return () => {
+      window.removeEventListener('user-logged-in', handleLogin);
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -24,16 +57,27 @@ const Navbar = () => {
           <Link to="/features" className="text-foreground hover:text-primary">Features</Link>
           <Link to="/pricing" className="text-foreground hover:text-primary">Pricing</Link>
           <Link to="/about" className="text-foreground hover:text-primary">About</Link>
+          {isLoggedIn && (
+            <Link to="/dashboard" className="text-foreground hover:text-primary">Dashboard</Link>
+          )}
         </div>
 
-        <div className="hidden md:flex items-center space-x-4">
-          <Button asChild variant="outline">
-            <Link to="/login">Login</Link>
-          </Button>
-          <Button asChild>
-            <Link to="/signup">Sign Up</Link>
-          </Button>
-        </div>
+        {!isLoggedIn ? (
+          <div className="hidden md:flex items-center space-x-4">
+            <Button asChild variant="outline">
+              <Link to="/login">Login</Link>
+            </Button>
+            <Button asChild>
+              <Link to="/signup">Sign Up</Link>
+            </Button>
+          </div>
+        ) : (
+          <div className="hidden md:flex items-center space-x-4">
+            <Button asChild variant="outline">
+              <Link to="/dashboard">Dashboard</Link>
+            </Button>
+          </div>
+        )}
 
         {/* Mobile Menu Button */}
         <button
@@ -65,19 +109,34 @@ const Navbar = () => {
             <Link to="/about" className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary hover:bg-accent">
               About
             </Link>
+            {isLoggedIn && (
+              <Link to="/dashboard" className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary hover:bg-accent">
+                Dashboard
+              </Link>
+            )}
           </div>
-          <div className="pt-4 pb-3 border-t border-border">
-            <div className="flex items-center px-5">
-              <Button asChild variant="outline" className="w-full mb-2">
-                <Link to="/login">Login</Link>
-              </Button>
+          {!isLoggedIn ? (
+            <div className="pt-4 pb-3 border-t border-border">
+              <div className="flex items-center px-5">
+                <Button asChild variant="outline" className="w-full mb-2">
+                  <Link to="/login">Login</Link>
+                </Button>
+              </div>
+              <div className="flex items-center px-5">
+                <Button asChild className="w-full">
+                  <Link to="/signup">Sign Up</Link>
+                </Button>
+              </div>
             </div>
-            <div className="flex items-center px-5">
-              <Button asChild className="w-full">
-                <Link to="/signup">Sign Up</Link>
-              </Button>
+          ) : (
+            <div className="pt-4 pb-3 border-t border-border">
+              <div className="flex items-center px-5">
+                <Button asChild className="w-full">
+                  <Link to="/dashboard">Dashboard</Link>
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </nav>

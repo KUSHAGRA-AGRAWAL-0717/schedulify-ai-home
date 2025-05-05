@@ -9,24 +9,24 @@ import { Calendar, Users, Brain, Award, Clock, Globe } from 'lucide-react';
 // Team member data
 const teamMembers = [
   {
+    name: "Kushagra Agrawal",
+    role: "Lead Developer",
+    bio: "Experienced software engineer with expertise in AI and scheduling algorithms, leading the technical vision of Schedulify."
+  },
+  {
+    name: "Irfan",
+    role: "Research Specialist",
+    bio: "AI researcher focused on creating intelligent systems that learn from human behavior patterns and optimize scheduling."
+  },
+  {
+    name: "Maitri",
+    role: "UI/UX Designer",
+    bio: "Award-winning designer dedicated to creating interfaces that feel intuitive and effortless for the best user experience."
+  },
+  {
     name: "Alex Johnson",
     role: "Founder & CEO",
     bio: "Former Google AI researcher with a passion for making technology that helps people live better lives."
-  },
-  {
-    name: "Sarah Chen",
-    role: "Chief Product Officer",
-    bio: "Productivity expert who spent 10 years researching how high performers manage their time and energy."
-  },
-  {
-    name: "Marcus Williams",
-    role: "Lead Engineer",
-    bio: "Machine learning specialist focused on creating AI systems that learn from human behavior patterns."
-  },
-  {
-    name: "Priya Patel",
-    role: "Head of Design",
-    bio: "Award-winning UX designer dedicated to creating interfaces that feel intuitive and effortless."
   }
 ];
 
