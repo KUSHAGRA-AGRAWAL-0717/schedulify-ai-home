@@ -13,11 +13,12 @@ interface PageNavigationProps {
     path: string;
     label: string;
   };
+  className?: string;
 }
 
-const PageNavigation = ({ prevPage, nextPage }: PageNavigationProps) => {
+const PageNavigation = ({ prevPage, nextPage, className = '' }: PageNavigationProps) => {
   return (
-    <div className="container mx-auto my-12 px-4 flex justify-between">
+    <div className={`container mx-auto my-12 px-4 flex justify-between ${className}`}>
       {prevPage ? (
         <Button variant="outline" asChild>
           <Link to={prevPage.path} className="flex items-center">
